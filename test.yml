@@ -9,7 +9,7 @@
     my_url: https://google.com
 
   tasks:
-    - name: curl a url
+    - name: test with URI module 
       ansible.builtin.uri:
         url: "{{ my_url }}"
       register: result
@@ -18,3 +18,10 @@
       debug:
         var: result
 
+    - name: test with cURL
+      ansible.builtin.command:  "curl -vvv {{ my_url }}"
+      register: curl_result
+
+    - name: debug curl_result
+      debug:
+        var: curl_result
