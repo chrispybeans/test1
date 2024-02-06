@@ -10,7 +10,7 @@
 
   tasks:
     - name: test with cURL
-      ansible.builtin.command:  "curl -vvv {{ my_url }}"
+      ansible.builtin.shell:  "curl -vvv {{ my_url }}"
       register: curl_result
 
     - name: debug curl_result
