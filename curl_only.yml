@@ -1,0 +1,18 @@
+---
+- name: test https
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: no
+
+  vars:
+    my_url: https://google.com
+
+  tasks:
+    - name: test with cURL
+      ansible.builtin.command:  "curl -vvv {{ my_url }}"
+      register: curl_result
+
+    - name: debug curl_result
+      debug:
+        var: curl_result
